@@ -24,6 +24,32 @@ class RPSController: UIViewController {
     }
     
 
+    @IBAction func p1RockAction(_ sender: UIButton) {
+        AppData.p1Choice[0] = true
+    }
+    @IBAction func p1PaperAction(_ sender: UIButton) {
+        AppData.p1Choice[1] = true
+
+    }
+    @IBAction func p1ScissorsAction(_ sender: UIButton) {
+        AppData.p1Choice[2] = true
+
+    }
+    @IBAction func p2RockAction(_ sender: UIButton) {
+        AppData.p2Choice[0] = true
+
+    }
+    @IBAction func p2PaperAction(_ sender: UIButton) {
+        AppData.p2Choice[1] = true
+
+    }
+    
+    @IBAction func p2ScissorsAction(_ sender: UIButton) {
+        AppData.p2Choice[2] = true
+
+    }
+    
+    
     
     
     

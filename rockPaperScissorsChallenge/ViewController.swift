@@ -8,6 +8,9 @@
 import UIKit
 class AppData {
     static var playerCount = false
+    static var roundCount = 0
+    static var p1Choice = [false,false,false]
+    static var p2Choice = [false,false,false]
 }
 class ViewController: UIViewController {
 

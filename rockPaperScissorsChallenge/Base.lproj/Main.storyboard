@@ -66,12 +66,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-t6-RJZ">
+                                <rect key="frame" x="16" y="673" width="92" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p2RockAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="Bc6-3x-4lH"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muP-VY-44c">
                                 <rect key="frame" x="282" y="91" width="92" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p1ScissorsAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="zNX-hh-BhE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKI-96-gHE">
                                 <rect key="frame" x="282" y="673" width="92" height="92"/>
@@ -79,6 +92,9 @@
                                 <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p2ScissorsAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="oJe-S1-aEq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9t-iB-Ds1">
                                 <rect key="frame" x="149" y="674" width="92" height="92"/>
@@ -86,6 +102,9 @@
                                 <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p2Paper:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="yxa-Uw-7Xz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w24-xA-AeA">
                                 <rect key="frame" x="149" y="91" width="92" height="92"/>
@@ -93,6 +112,9 @@
                                 <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p1PaperAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="MX3-0z-iaA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fi4-gg-UmE">
                                 <rect key="frame" x="16" y="91" width="92" height="92"/>
@@ -100,13 +122,9 @@
                                 <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-t6-RJZ">
-                                <rect key="frame" x="16" y="673" width="92" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.30076469449999998" green="0.84406565659999999" blue="0.82751764159999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="p1RockAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="G4e-uP-cex"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OsY-kf-T4b"/>
