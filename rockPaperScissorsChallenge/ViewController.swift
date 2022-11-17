@@ -11,6 +11,26 @@ class AppData {
     static var roundCount = 0
     static var p1Choice = [false,false,false]
     static var p2Choice = [false,false,false]
+    
+    // 1 is P1 w, 2 is P2 w, 0 is draw
+    //P1 Rock Paper Scissors
+    //P2
+  //Rock  0     1      2
+ //Paper  2     0      1
+//Scissor 1     2      0
+    static var logicData = [[Int]]()
+    //[[0,1,2][2,0,1][1,2,0]]
+//    static func stuffIn()
+//    {
+//        for i in 0...2
+//        {
+//            for j in 0...1
+//            {
+//                logicData[i][j] = 7
+//            }
+//
+//        }
+//    }
 }
 class ViewController: UIViewController {
 

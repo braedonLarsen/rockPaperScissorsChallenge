@@ -93,7 +93,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="p2ScissorsAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="oJe-S1-aEq"/>
+                                    <action selector="p2ScissorsAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="7V0-BX-aUE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9t-iB-Ds1">
@@ -103,7 +103,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="p2Paper:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="yxa-Uw-7Xz"/>
+                                    <action selector="p2PaperAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="14L-ty-YP2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w24-xA-AeA">
@@ -126,6 +126,13 @@
                                     <action selector="p1RockAction:" destination="5Wb-Hc-h27" eventType="touchUpInside" id="G4e-uP-cex"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0s-I0-w3u">
+                                <rect key="frame" x="148" y="392" width="95" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OsY-kf-T4b"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -135,9 +142,10 @@
                         <outlet property="p1Paper" destination="w24-xA-AeA" id="NkY-LY-TJw"/>
                         <outlet property="p1Rock" destination="fi4-gg-UmE" id="o5z-wy-3Kv"/>
                         <outlet property="p1Scissors" destination="muP-VY-44c" id="Y1S-Ni-dpB"/>
-                        <outlet property="p2Paper" destination="zKI-96-gHE" id="Pvg-Fp-dvs"/>
+                        <outlet property="p2Paper" destination="c9t-iB-Ds1" id="qB2-7f-v0S"/>
                         <outlet property="p2Rock" destination="5vc-t6-RJZ" id="ggd-sL-Mpu"/>
-                        <outlet property="p2Scissors" destination="zKI-96-gHE" id="HWI-G6-O8G"/>
+                        <outlet property="p2Scissors" destination="zKI-96-gHE" id="iXg-Jx-h9m"/>
+                        <outlet property="resultOutlet" destination="Z0s-I0-w3u" id="bYv-2K-XHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6s-MO-9wE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
