@@ -25,7 +25,7 @@ class RPSController: UIViewController {
         result = String(logicCheck())
             print("running")
             print(result)
-            resultOutlet.text = result
+       resultOutlet.text = result
         
         // Do any additional setup after loading the view.
     }
@@ -65,6 +65,7 @@ class RPSController: UIViewController {
         if (press >= 2)
         {
            result = String(logicCheck())
+            
             resultOutlet.text = result
 
         }
@@ -192,9 +193,20 @@ class RPSController: UIViewController {
             return 0
         }
     }
-    func textOutput ()-> String
+    func textOutput (value: Int)-> String
     {
-        return ""
+        if (value == 1)
+        {
+            return "Player One Won"
+        }
+        if (value == 2)
+        {
+            return "Player Two Won "
+        }
+        else
+        {
+            return "Its a Draw"
+        }
     }
     /*
     // MARK: - Navigation
