@@ -13,7 +13,7 @@ class AppData {
     static var p1Choice = [false,false,false]
     static var p2Choice = [false,false,false]
     
-    // 1 is P1 w, 2 is P2 w, 0 is draw
+     // 1 is P1 w, 2 is P2 w, 0 is draw
     //P1 Rock Paper Scissors
     //P2
   //Rock  0     1      2

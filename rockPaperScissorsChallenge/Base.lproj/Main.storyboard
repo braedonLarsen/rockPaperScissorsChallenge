@@ -43,6 +43,12 @@
                                     <action selector="p2Action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bi7-C8-jL6"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NUF-Rb-n74">
+                                <rect key="frame" x="136" y="534" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -133,6 +139,21 @@
                                 <color key="textColor" systemColor="systemGreenColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jEW-3p-Afe">
+                                <rect key="frame" x="33" y="213" width="324" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="Rock"/>
+                                    <segment title="Paper"/>
+                                    <segment title="Scissors"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" systemColor="systemGreenColor"/>
+                                <connections>
+                                    <action selector="playerOneActions:" destination="5Wb-Hc-h27" eventType="valueChanged" id="SIP-ii-S4A"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OsY-kf-T4b"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -145,6 +166,7 @@
                         <outlet property="p2Paper" destination="c9t-iB-Ds1" id="qB2-7f-v0S"/>
                         <outlet property="p2Rock" destination="5vc-t6-RJZ" id="ggd-sL-Mpu"/>
                         <outlet property="p2Scissors" destination="zKI-96-gHE" id="iXg-Jx-h9m"/>
+                        <outlet property="playerOneSegments" destination="jEW-3p-Afe" id="wWd-1o-h2A"/>
                         <outlet property="resultOutlet" destination="Z0s-I0-w3u" id="bYv-2K-XHa"/>
                     </connections>
                 </viewController>
@@ -168,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gaw-Ox-n4t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56.92307692307692" y="3.5545023696682461"/>
+            <point key="canvasLocation" x="168" y="4"/>
         </scene>
     </scenes>
     <resources>

@@ -10,6 +10,7 @@ import UIKit
 class RPSController: UIViewController {
 
     
+    @IBOutlet weak var playerOneSegments: UISegmentedControl!
     @IBOutlet weak var resultOutlet: UILabel!
     @IBOutlet weak var p1Rock: UIButton!
     @IBOutlet weak var p1Paper: UIButton!
@@ -21,7 +22,18 @@ class RPSController: UIViewController {
     var press = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if AppData.playerCount == true
+        {
+            p2Paper.isHidden = true
+            p2Scissors.isHidden = true
+            p2Rock.isHidden = true
+        }
+        if AppData.playerCount == false
+        {
+            p2Paper.isHidden = false
+            p2Scissors.isHidden = false
+            p2Rock.isHidden = false
+        }
         result = String(logicCheck())
             print("running")
             print(result)
@@ -42,6 +54,17 @@ class RPSController: UIViewController {
            result = String(logicCheck())
             resultOutlet.text = result
 
+        }
+    }
+    @IBAction func playerOneActions(_ sender: Any) {
+        var active = playerOneSegments.selectedSegmentIndex
+        switch active
+        {
+        case 0: AppData.p1Choice[0] = true
+        case 1: AppData.p1Choice[1] = true
+        case 2: AppData.p1Choice[2] = true
+        default: break
+            print("\(AppData.p1Choice)")
         }
     }
     @IBAction func p1PaperAction(_ sender: UIButton) {
@@ -185,8 +208,6 @@ class RPSController: UIViewController {
         {
             print("other option")
             return 2
-
-            
         }
         else
         {
