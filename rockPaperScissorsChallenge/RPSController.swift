@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//button label, stackview, imageview, navigation controller, constraints, higs, textfield, segment controller
 
 class RPSController: UIViewController {
 
@@ -17,7 +18,9 @@ class RPSController: UIViewController {
     @IBOutlet weak var p1Scissors: UIButton!
     @IBOutlet weak var p2Rock: UIButton!
     @IBOutlet weak var p2Paper: UIButton!
+    @IBOutlet weak var playerTwoSegments: UISegmentedControl!
     @IBOutlet weak var p2Scissors: UIButton!
+    
     var result = ""
     var press = 0
     override func viewDidLoad() {
@@ -64,9 +67,19 @@ class RPSController: UIViewController {
         case 1: AppData.p1Choice[1] = true
         case 2: AppData.p1Choice[2] = true
         default: break
-            print("\(AppData.p1Choice)")
         }
     }
+    @IBAction func playerTwoActions(_ sender: Any) {
+        var active = playerTwoSegments.selectedSegmentIndex
+        switch active
+        {
+        case 0: AppData.p2Choice[0] = true
+        case 1: AppData.p2Choice[1] = true
+        case 2: AppData.p2Choice[2] = true
+        default: break 
+        }
+    }
+    
     @IBAction func p1PaperAction(_ sender: UIButton) {
         p1Paper.backgroundColor = UIColor(named: "systemGreen")
         AppData.p1Choice[1] = true

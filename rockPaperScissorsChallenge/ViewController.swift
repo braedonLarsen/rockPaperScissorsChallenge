@@ -3,7 +3,7 @@
 //  rockPaperScissorsChallenge
 //
 //  Created by BRAEDON LARSEN on 11/11/22.
-//Programming Concepts: variables, if else, arrays, functions, github
+//Programming Concepts: variables, if else, arrays, functions, github, switch statemnets
 //UI Elements: Button, Label, HIGS, Navigation Controller, 
 
 import UIKit
