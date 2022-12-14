@@ -42,10 +42,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func p1Action(_ sender: UIButton) {
+        AppData.playerCount = true
         performSegue(withIdentifier: "nextScreen", sender: self)
     }
     @IBAction func p2Action(_ sender: UIButton) {
-        AppData.playerCount = true
+        AppData.playerCount = false
         performSegue(withIdentifier: "nextScreen", sender: self)
     }
     
