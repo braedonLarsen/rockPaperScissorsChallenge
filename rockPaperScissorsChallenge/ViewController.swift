@@ -4,14 +4,16 @@
 //
 //  Created by BRAEDON LARSEN on 11/11/22.
 //Programming Concepts: variables, if else, arrays, functions, github, switch statemnets
-//UI Elements: Button, Label, HIGS, Navigation Controller, 
+//UI Elements: Button, Label, HIGS, Navigation Controller, slider
 
 import UIKit
 class AppData {
     static var playerCount = false
     static var roundCount = 0
-    static var p1Choice = [false,false,false]
-    static var p2Choice = [false,false,false]
+    static var p1Choice = option(i:0)
+    static var p2Choice = option(i:0)
+    static var name: String? = ""
+    
     
      // 1 is P1 w, 2 is P2 w, 0 is draw
     //P1 Rock Paper Scissors
@@ -35,6 +37,7 @@ class AppData {
 }
 class ViewController: UIViewController {
 
+    @IBOutlet weak var nameBoxOutlet: UITextField!
     @IBOutlet var p1Outlet: UIButton!
     @IBOutlet var p2Outlet: UIButton!
     override func viewDidLoad() {
@@ -48,6 +51,21 @@ class ViewController: UIViewController {
     @IBAction func p2Action(_ sender: UIButton) {
         AppData.playerCount = false
         performSegue(withIdentifier: "nextScreen", sender: self)
+    }
+    @IBAction func updateNameAction(_ sender: UITextField) {
+        AppData.name = obligatoryGuard(s1: sender.text)
+    }
+    @IBAction func roundSliderAction(_ sender: UISlider) {
+        AppData.roundCount = Int(sender.value)
+        
+        
+    }
+    func obligatoryGuard(s1: String?) -> String
+    {
+        guard let temp = s1 else{
+            return ""
+        }
+        return s1!
     }
     
     

@@ -7,241 +7,306 @@
 
 import UIKit
 //button label, stackview, imageview, navigation controller, constraints, higs, textfield, segment controller
-
+class option
+{
+    enum choice{
+        case rock
+        case paper
+        case scissors
+    }
+    var store: choice
+    init(i: Int )
+    {
+       if i == 0
+        {
+           store = choice.paper
+       }
+        if i == 1
+        {
+            store = choice.rock
+        }
+        if i == 2
+        {
+            store = choice.scissors
+        }
+        else {
+            store = choice.paper 
+        }
+    }
+    func changeCase(c: Int)
+    {
+         if c == 0
+        {
+           store = choice.paper
+       }
+        if c == 1
+        {
+            store = choice.rock
+        }
+        if c == 2
+        {
+            store = choice.scissors
+        }
+        else {
+            store = choice.paper
+        }
+    }
+    func getCase() -> Int
+    {
+        if store == choice.paper
+        {
+            return 0
+        }
+        if store == choice.rock
+        {
+            return 1
+        }
+        if store == choice.scissors
+        {
+            return 2
+        }
+        else {return 0}
+    }
+}
+//Programming Concepts: variables, if else, arrays, functions, github, switch statemnets
+//UI Elements: Button, Label, HIGS, Navigation Controller, slider
 class RPSController: UIViewController {
 
     
     @IBOutlet weak var playerOneSegments: UISegmentedControl!
     @IBOutlet weak var resultOutlet: UILabel!
-    @IBOutlet weak var p1Rock: UIButton!
-    @IBOutlet weak var p1Paper: UIButton!
-    @IBOutlet weak var p1Scissors: UIButton!
-    @IBOutlet weak var p2Rock: UIButton!
-    @IBOutlet weak var p2Paper: UIButton!
     @IBOutlet weak var playerTwoSegments: UISegmentedControl!
     @IBOutlet weak var p2Scissors: UIButton!
     
-    var result = ""
+    var p1Pick = false
+    var p2Pick = false
+    var roundResult = 0
     var press = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        if AppData.playerCount == true
-        {
-            p2Paper.isHidden = true
-            p2Scissors.isHidden = true
-            p2Rock.isHidden = true
-        }
-        if AppData.playerCount == false
-        {
-            p2Paper.isHidden = false
-            p2Scissors.isHidden = false
-            p2Rock.isHidden = false
-        }
-        result = String(logicCheck())
-            print("running")
-            print(result)
-       resultOutlet.text = result
+       
+       
+      
         
         // Do any additional setup after loading the view.
+        roundResult = logicCheck()
+         
+          if roundResult == 1
+         {
+             resultOutlet.text = "\(AppData.name) Victory"
+         }
+         else if roundResult == 2
+         {
+             resultOutlet.text = "P2 Victory"
+         }
+         else { resultOutlet.text = "Draw"}
+             print("running")
+
     }
     
 
   
-    @IBAction func p1RockAction(_ sender: UIButton) {
-        p1Rock.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p1Choice[0] = true
-        press += 1
-        print(AppData.p1Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            resultOutlet.text = result
-
-        }
-    }
+    
     @IBAction func playerOneActions(_ sender: Any) {
         var active = playerOneSegments.selectedSegmentIndex
         switch active
         {
-        case 0: AppData.p1Choice[0] = true
-        case 1: AppData.p1Choice[1] = true
-        case 2: AppData.p1Choice[2] = true
+        case 0: AppData.p1Choice.changeCase(c: 0)
+        case 1: AppData.p1Choice.changeCase(c: 1)
+        case 2: AppData.p1Choice.changeCase(c: 2)
         default: break
         }
+        p1Pick = true
+        if AppData.playerCount == true{
+            AppData.p2Choice.changeCase(c:computerChoice())
+            p2Pick = true
+            print(AppData.p1Choice)
+            print(p1Pick)
+            
+        }
+        
+        
     }
     @IBAction func playerTwoActions(_ sender: Any) {
         var active = playerTwoSegments.selectedSegmentIndex
         switch active
         {
-        case 0: AppData.p2Choice[0] = true
-        case 1: AppData.p2Choice[1] = true
-        case 2: AppData.p2Choice[2] = true
+        case 0: AppData.p2Choice.changeCase(c:0)
+        case 1: AppData.p2Choice.changeCase(c:1)
+        case 2: AppData.p2Choice.changeCase(c:2)
         default: break 
         }
+        p2Pick = true
+        print(AppData.p2Choice)
+        print(p2Pick)
     }
     
-    @IBAction func p1PaperAction(_ sender: UIButton) {
-        p1Paper.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p1Choice[1] = true
-        press += 1
-        print(AppData.p1Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            resultOutlet.text = result
+ 
 
-        }
 
-    }
-    @IBAction func p1ScissorsAction(_ sender: UIButton) {
-        p1Scissors.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p1Choice[2] = true
-        press += 1
-        print(AppData.p1Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            
-            resultOutlet.text = result
 
-        }
-
-    }
-    @IBAction func p2RockAction(_ sender: UIButton) {
-        p2Rock.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p2Choice[0] = true
-        press += 1
-        print(AppData.p2Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            resultOutlet.text = result
-
-        }
-
-    }
-    @IBAction func p2PaperAction(_ sender: UIButton) {
-        p2Paper.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p2Choice[1] = true
-        press += 1
-        print(AppData.p2Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            resultOutlet.text = result
-
-        }
-
-    }
-    @IBAction func p2ScissorsAction(_ sender: UIButton) {
-        p2Scissors.backgroundColor = UIColor(named: "systemGreen")
-        AppData.p2Choice[2] = true
-        press += 1
-        print(AppData.p2Choice)
-        if (press >= 2)
-        {
-           result = String(logicCheck())
-            resultOutlet.text = result
-
-        }
-    }
     
-    func buildOne()
+    func computerChoice() -> Int
     {
-        
+        var output = Int.random(in:0..<3)
+        return output
     }
     //0 is tie 1 is p1 2 is p2
    
-    
-    func logicCheck() -> Int
-    {    //     rock paper scissors
-        //Rock  0     1      2
-       //Paper  2     0      1
-      //Scissor 1     2      0
-       print("logic check")
-       //parse the bool arrays for true value
-        var p1 = AppData.p1Choice
-        var p1Store = 0
-        for i in 0...2
-        {
-          if p1[i] == true
-          {
-              p1Store = i
-              print(p1Store)
-          }
-        }
-        print(p1)
-        var p2 = AppData.p2Choice
-        var p2Store = 0
-        for i in 0...2
-        {
-          if p2[i] == true
-          {
-              p2Store = i
-              print(p2Store)
-          }
-        }
-
-        print(p2)
-        if p1Store == p2Store
-        {
-            return 0
-        }
-        if p1Store == 2 && p2Store == 0
-        {
-            print("other option")
-            return 2
-        }
-        if p1Store == 1 && p2Store == 0
-        {
-           
-            print("other option")
-            return 1
-
-        }
-        if p1Store == 2 && p2Store == 1
-        {
-            print("other option")
-            return 1
-
-        }
-        if p1Store == 0 && p2Store == 1
-        {
-            print("other option")
-            return 1
-
-        }
-        if p1Store == 0 && p2Store == 2
-        {
-            print("other option")
-            return 1
-
-        }
-        if p1Store == 1 && p2Store == 2
-        {
-            print("other option")
-            return 2
-        }
-        else
-        {
-            return 0
-        }
-    }
-    func textOutput (value: Int)-> String
+    func goOnCheck() -> Bool
     {
-        if (value == 1)
+        if p1Pick && p2Pick == true
         {
-            return "Player One Won"
+            return true
         }
-        if (value == 2)
-        {
-            return "Player Two Won "
-        }
-        else
-        {
-            return "Its a Draw"
-        }
+        else{return false }
     }
+    func logicCheck() -> Int
+    {
+        if goOnCheck() == true
+        {
+            print("logic go")
+            var p1Select = AppData.p1Choice.getCase()
+            var p2Select = AppData.p2Choice.getCase()
+            if p1Select == 0
+            {
+                if p2Select == 0
+                {
+                    return 0
+                }
+                if p2Select == 1
+                {
+                    return 1
+                }
+                if p2Select == 2
+                {
+                    return 2
+                }
+            }
+            else if p1Select == 1
+            {
+                if p2Select == 0
+                {
+                    return 2
+                }
+                if p2Select == 1
+                {
+                    return 0
+                }
+                if p2Select == 2
+                {
+                    return 1
+                }
+            }
+            else
+            {
+                if p2Select == 0
+                {
+                    return 1
+                }
+                if p2Select == 1
+                {
+                    return 2
+                }
+                if p2Select == 2
+                {
+                    return 0
+                }
+            }
+            
+        }
+    return 0
+    }
+    
+//    func logicCheck() -> Int
+//    {    //     rock paper scissors
+//        //Rock  0     1      2
+//       //Paper  2     0      1
+//      //Scissor 1     2      0
+//       print("logic check")
+//       //parse the bool arrays for true value
+//        var p1 = AppData.p1Choice
+//        var p1Store = 0
+//        for i in 0...2
+//        {
+//          if p1[i] == true
+//          {
+//              p1Store = i
+//              print(p1Store)
+//          }
+//        }
+//        print(p1)
+//        var p2 = AppData.p2Choice
+//        var p2Store = 0
+//        for i in 0...2
+//        {
+//          if p2[i] == true
+//          {
+//              p2Store = i
+//              print(p2Store)
+//          }
+//        }
+//
+//        print(p2)
+//        if p1Store == p2Store
+//        {
+//            return 0
+//        }
+//        if p1Store == 2 && p2Store == 0
+//        {
+//            print("other option")
+//            return 2
+//        }
+//        if p1Store == 1 && p2Store == 0
+//        {
+//
+//            print("other option")
+//            return 1
+//
+//        }
+//        if p1Store == 2 && p2Store == 1
+//        {
+//            print("other option")
+//            return 1
+//
+//        }
+//        if p1Store == 0 && p2Store == 1
+//        {
+//            print("other option")
+//            return 1
+//
+//        }
+//        if p1Store == 0 && p2Store == 2
+//        {
+//            print("other option")
+//            return 1
+//
+//        }
+//        if p1Store == 1 && p2Store == 2
+//        {
+//            print("other option")
+//            return 2
+//        }
+//        else
+//        {
+//            return 0
+//        }
+//    }
+//    func textOutput (value: Int)-> String
+//    {
+//        if (value == 1)
+//        {
+//            return "Player One Won"
+//        }
+//        if (value == 2)
+//        {
+//            return "Player Two Won "
+//        }
+//        else
+//        {
+//            return "Its a Draw"
+//        }
+//    }
     /*
     // MARK: - Navigation
 
