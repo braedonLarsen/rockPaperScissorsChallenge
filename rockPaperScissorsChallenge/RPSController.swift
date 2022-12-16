@@ -57,13 +57,13 @@ class option
     }
     func getCase() -> Int
     {
-        if store == choice.paper
-        {
-            return 1
-        }
         if store == choice.rock
         {
             return 0
+        }
+        if store == choice.paper
+        {
+            return 1
         }
         if store == choice.scissors
         {
@@ -140,7 +140,6 @@ class RPSController: UIViewController {
             AppData.p2Choice.changeCase(c:computerChoice())
             p2Pick = true
         }
-        print(AppData.p1Choice)
         print(p1Pick)
         
     }
@@ -154,14 +153,11 @@ class RPSController: UIViewController {
         }
         else {p1Pick = true}
         imageUpdate()
-        print(p1Pick)
-        print(p2Pick)
         logicConvert()
     }
     
     @IBAction func p2ConfirmAction(_ sender: UITapGestureRecognizer) {
         p2Pick = true
-        print(p2Pick)
         imageUpdate()
         logicConvert()
     }
@@ -193,7 +189,7 @@ class RPSController: UIViewController {
         }
         else if AppData.p1Choice.getCase() == 1
         {
-            print("rock Image")
+            print("paper Image")
             playerOneImage.image = UIImage(named: "paper.png")
         }
         else
