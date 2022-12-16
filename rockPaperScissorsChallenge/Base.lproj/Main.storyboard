@@ -92,13 +92,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0s-I0-w3u">
-                                <rect key="frame" x="148" y="392" width="95" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" systemColor="systemGreenColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AxA-IA-vFe">
                                 <rect key="frame" x="33" y="660" width="324" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -130,18 +123,55 @@
                                     <action selector="playerOneActions:" destination="5Wb-Hc-h27" eventType="valueChanged" id="SIP-ii-S4A"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6w-cE-Iby">
+                                <rect key="frame" x="75" y="239" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TWW-m6-p3P" appends="YES" id="Pht-BI-hbm"/>
+                                </connections>
+                            </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7mR-C1-Nj2">
+                                <rect key="frame" x="75" y="511" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KAI-gM-Yff" appends="YES" id="fgN-h4-PFZ"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0s-I0-w3u">
+                                <rect key="frame" x="0.0" y="392" width="390" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OsY-kf-T4b"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="PNu-PY-4t3"/>
                     <connections>
+                        <outlet property="playerOneImage" destination="G6w-cE-Iby" id="mas-oa-lyG"/>
                         <outlet property="playerOneSegments" destination="jEW-3p-Afe" id="wWd-1o-h2A"/>
+                        <outlet property="playerTwoImage" destination="7mR-C1-Nj2" id="r4j-fg-jq1"/>
                         <outlet property="playerTwoSegments" destination="AxA-IA-vFe" id="vRs-Qj-rVm"/>
                         <outlet property="resultOutlet" destination="Z0s-I0-w3u" id="bYv-2K-XHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6s-MO-9wE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TWW-m6-p3P">
+                    <connections>
+                        <action selector="p1ConfirmAction:" destination="5Wb-Hc-h27" id="BeO-wW-kpE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="KAI-gM-Yff">
+                    <connections>
+                        <action selector="p2ConfirmAction:" destination="5Wb-Hc-h27" id="OIu-ve-HS3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1824.6153846153845" y="3.5545023696682461"/>
         </scene>

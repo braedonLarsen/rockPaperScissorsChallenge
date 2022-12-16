@@ -12,7 +12,8 @@ class AppData {
     static var roundCount = 0
     static var p1Choice = option(i:0)
     static var p2Choice = option(i:0)
-    static var name: String? = ""
+    static var roundsDone = 0 
+    static var name: String? = "P1"
     
     
      // 1 is P1 w, 2 is P2 w, 0 is draw
@@ -63,7 +64,7 @@ class ViewController: UIViewController {
     func obligatoryGuard(s1: String?) -> String
     {
         guard let temp = s1 else{
-            return ""
+            return "P1"
         }
         return s1!
     }

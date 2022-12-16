@@ -19,11 +19,11 @@ class option
     {
        if i == 0
         {
-           store = choice.paper
+           store = choice.rock
        }
         if i == 1
         {
-            store = choice.rock
+            store = choice.paper
         }
         if i == 2
         {
@@ -35,17 +35,21 @@ class option
     }
     func changeCase(c: Int)
     {
+        print("changing case")
          if c == 0
         {
-           store = choice.paper
+           store = choice.rock
+             print("case now rock")
        }
         if c == 1
         {
-            store = choice.rock
+            store = choice.paper
+            print("case now paper")
         }
         if c == 2
         {
             store = choice.scissors
+            print("case now scissors")
         }
         else {
             store = choice.paper
@@ -55,11 +59,11 @@ class option
     {
         if store == choice.paper
         {
-            return 0
+            return 1
         }
         if store == choice.rock
         {
-            return 1
+            return 0
         }
         if store == choice.scissors
         {
@@ -76,14 +80,27 @@ class RPSController: UIViewController {
     @IBOutlet weak var playerOneSegments: UISegmentedControl!
     @IBOutlet weak var resultOutlet: UILabel!
     @IBOutlet weak var playerTwoSegments: UISegmentedControl!
+    @IBOutlet weak var playerTwoImage: UIImageView!
+    @IBOutlet weak var playerOneImage: UIImageView!
     @IBOutlet weak var p2Scissors: UIButton!
     
     var p1Pick = false
     var p2Pick = false
     var roundResult = 0
     var press = 0
+    var p1Wins = 0
+    var p2Wins = 0
+    var output = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        if AppData.playerCount == true
+        {
+            playerTwoSegments.isHidden = true
+        }
+        else{
+            playerTwoSegments.isHidden = false
+        }
+    
        
        
       
@@ -108,24 +125,45 @@ class RPSController: UIViewController {
   
     
     @IBAction func playerOneActions(_ sender: Any) {
-        var active = playerOneSegments.selectedSegmentIndex
+        let active = playerOneSegments.selectedSegmentIndex
+        print("segment \(active)")
         switch active
         {
-        case 0: AppData.p1Choice.changeCase(c: 0)
-        case 1: AppData.p1Choice.changeCase(c: 1)
-        case 2: AppData.p1Choice.changeCase(c: 2)
+        case 0: AppData.p1Choice.changeCase(c: 0); print("p1 picked rock")
+        case 1: AppData.p1Choice.changeCase(c: 1); print("p1 picked paper")
+        case 2: AppData.p1Choice.changeCase(c: 2); print("p1 picked scissors")
         default: break
         }
         p1Pick = true
         if AppData.playerCount == true{
+            print("computer go")
             AppData.p2Choice.changeCase(c:computerChoice())
             p2Pick = true
-            print(AppData.p1Choice)
-            print(p1Pick)
-            
         }
+        print(AppData.p1Choice)
+        print(p1Pick)
         
-        
+    }
+    
+    @IBAction func p1ConfirmAction(_ sender: Any) {
+        print("p1confirm")
+        if AppData.playerCount == true
+        {
+            p1Pick = true
+            p2Pick = true
+        }
+        else {p1Pick = true}
+        imageUpdate()
+        print(p1Pick)
+        print(p2Pick)
+        logicConvert()
+    }
+    
+    @IBAction func p2ConfirmAction(_ sender: UITapGestureRecognizer) {
+        p2Pick = true
+        print(p2Pick)
+        imageUpdate()
+        logicConvert()
     }
     @IBAction func playerTwoActions(_ sender: Any) {
         var active = playerTwoSegments.selectedSegmentIndex
@@ -145,10 +183,39 @@ class RPSController: UIViewController {
 
 
 
-    
+    func imageUpdate()
+    {
+        print("p1 \(AppData.p1Choice.getCase())")
+        print("p2 \(AppData.p2Choice.getCase())")
+        if AppData.p1Choice.getCase() == 0
+        {
+            playerOneImage.image = UIImage(named: "rocks.png")
+        }
+        else if AppData.p1Choice.getCase() == 1
+        {
+            print("rock Image")
+            playerOneImage.image = UIImage(named: "paper.png")
+        }
+        else
+        {
+            playerOneImage.image = UIImage(named: "scissors.png")
+        }
+        if AppData.p2Choice.getCase() == 0
+        {
+            playerTwoImage.image = UIImage(named: "rocks.png")
+        }
+        else if AppData.p2Choice.getCase() == 1
+        {
+            playerTwoImage.image = UIImage(named: "paper.png")
+        }
+        else
+        {
+            playerTwoImage.image = UIImage(named: "scissors.png")
+        }
+    }
     func computerChoice() -> Int
     {
-        var output = Int.random(in:0..<3)
+         output = Int.random(in:0..<3)
         return output
     }
     //0 is tie 1 is p1 2 is p2
@@ -161,6 +228,20 @@ class RPSController: UIViewController {
         }
         else{return false }
     }
+    func logicConvert()
+    {
+        print("converting logic")
+        var input = logicCheck()
+        print(input)
+        switch input
+        {
+        case 1: resultOutlet.text = "\(AppData.name!) Wins"
+        case 2: resultOutlet.text = "Player Two Wins"
+        default: resultOutlet.text = "Its a draw"
+        }
+        gameOver()
+    }
+
     func logicCheck() -> Int
     {
         if goOnCheck() == true
@@ -168,26 +249,32 @@ class RPSController: UIViewController {
             print("logic go")
             var p1Select = AppData.p1Choice.getCase()
             var p2Select = AppData.p2Choice.getCase()
-            if p1Select == 0
+            print("p1Picked\(p1Select)") ; print("p2picked\(p2Select)")
+            AppData.roundsDone += 1
+            if p1Select == 0 //p1 plays rock
             {
                 if p2Select == 0
                 {
+                    
                     return 0
                 }
                 if p2Select == 1
                 {
-                    return 1
+                    p2Wins += 1
+                    return 2
                 }
                 if p2Select == 2
                 {
-                    return 2
+                    p1Wins += 1
+                    return 1
                 }
             }
-            else if p1Select == 1
+            else if p1Select == 1 //p1 plays paper
             {
                 if p2Select == 0
                 {
-                    return 2
+                    p1Wins += 1
+                    return 1
                 }
                 if p2Select == 1
                 {
@@ -195,18 +282,21 @@ class RPSController: UIViewController {
                 }
                 if p2Select == 2
                 {
-                    return 1
+                    p2Wins += 1
+                    return 2
                 }
             }
-            else
+            else //p1 plays scissors
             {
                 if p2Select == 0
                 {
-                    return 1
+                    p2Wins += 1
+                    return 2
                 }
                 if p2Select == 1
                 {
-                    return 2
+                    p1Wins += 1
+                    return 1
                 }
                 if p2Select == 2
                 {
@@ -217,7 +307,33 @@ class RPSController: UIViewController {
         }
     return 0
     }
-    
+    func gameOver()
+    {
+        if AppData.roundsDone >= AppData.roundCount
+        {
+            AppData.roundsDone = 0
+            var whoWon = 0
+            playerOneSegments.isHidden = true
+            playerTwoSegments.isHidden = true
+            if p2Wins > p1Wins
+            {
+                whoWon = 2
+            }
+            else if p1Wins > p2Wins
+            {
+                whoWon = 1
+            }
+            var textOut = ""
+            switch whoWon
+            {
+            case 1: textOut = "\(AppData.name!) Won!"
+            case 2: textOut = "Player 2 Won!"
+            default: textOut = "It's a Draw!"
+            }
+            resultOutlet.text = textOut
+            
+        }
+    }
 //    func logicCheck() -> Int
 //    {    //     rock paper scissors
 //        //Rock  0     1      2
